@@ -6,6 +6,7 @@
 
 //#define sleep delayMicroseconds(0.9)
 #define sleep mySleep()
+#define length 100
 #define conditionx (x<1500&&x>1200)||(x>2300&&x<2999)
 #define conditiony (y<1500&&y>1200)||(y>2300&&y<2999)
 
@@ -27,7 +28,7 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 	digitalWrite(cs, 1); //Initializes chip select to 1
 	digitalWrite(clock, 0); //Initializes clock to 1
 	sleep;
-	int arr[100],flag=0,counter=0, xthresh=0, xgot=0, ythresh=0, ygot=0, xlast, ylast;
+	int arrx[length],arry[length],flag=0,counter=0, xthresh=0, xgot=0, ythresh=0, ygot=0, xlast, ylast, event=0;
 	volatile uint16_t x=0,y=0,dx=0,dy=0;
 	//while(1)
 	//while(counter<100)
@@ -53,6 +54,8 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 			x=x|(dx<<(11-j));
 			y=y|(dy<<(11-j));
 			}
+		arrx[counter%length]=x;
+		arry[counter%length]=y;
 		if(conditionx&&xgot==0)
 			{
 			xthresh=counter;
@@ -65,6 +68,7 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 			ygot=1;
 			ylast=y;
 			}
+		
 		//arr[counter]=x;
 		//if((x>2300&&x<2999)||y>2300)
 		//	printf("%d\t%d\n",x,y);
@@ -73,6 +77,9 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 		sleep;
 		counter++;
 		}	
+	for(int i=0;i<length;i++)
+		printf("%d\t%d x\n",arrx[i],arry[i]);
+	
 	printf("%d\t%d x\n",xthresh,xlast);
 	printf("%d\t%d y\n",ythresh,ylast);
 	//for(int i=0;i<100;i++)
