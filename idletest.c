@@ -32,7 +32,7 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 	int arrx[number],arry[number],arrz[number],flag=0,counter=0, xthresh=0, xgot=0, ythresh=0, ygot=0, xlast, ylast, event=0;
 	//arrx = array containing last length x values
 	//arry = array containing last length y values
-	volatile uint16_t x=0,y=0,dx=0,dy=0;
+	volatile uint16_t x=0,y=0,z=0,dz=0,dx=0,dy=0;
 	//while(1)
 	while(counter<number)
 	//while((xgot==0)||(ygot==0))	//Condition which terminates the loop after both x,y channels have been triggered
