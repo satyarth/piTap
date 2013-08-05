@@ -7,6 +7,7 @@
 //#define sleep delayMicroseconds(0.9)
 #define sleep mySleep()
 #define length 500
+#define number 100000
 #define conditionx (x<1500&&x>1200)||(x>2300&&x<2999)
 #define conditiony (y<1500&&y>1200)||(y>2300&&y<2999)
 
@@ -28,12 +29,12 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 	digitalWrite(cs, 1); //Initializes chip select to 1
 	digitalWrite(clock, 0); //Initializes clock to 1
 	sleep;
-	int arrx[10000],arry[10000],flag=0,counter=0, xthresh=0, xgot=0, ythresh=0, ygot=0, xlast, ylast, event=0;
+	int arrx[number],arry[number],flag=0,counter=0, xthresh=0, xgot=0, ythresh=0, ygot=0, xlast, ylast, event=0;
 	//arrx = array containing last length x values
 	//arry = array containing last length y values
 	volatile uint16_t x=0,y=0,dx=0,dy=0;
 	//while(1)
-	while(counter<10000)
+	while(counter<number)
 	//while((xgot==0)||(ygot==0))	//Condition which terminates the loop after both x,y channels have been triggered
 		{
 		x=y=dx=dy=0;
@@ -62,7 +63,7 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 		sleep;
 		counter++;
 		}	
-	for(int i=0;i<10000;i++)
+	for(int i=0;i<number;i++)
 		printf("%d\t%d \n",arrx[i],arry[i]);
 	}
 
