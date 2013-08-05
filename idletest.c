@@ -29,7 +29,7 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 	digitalWrite(cs, 1); //Initializes chip select to 1
 	digitalWrite(clock, 0); //Initializes clock to 1
 	sleep;
-	int arrx[number],arry[number],flag=0,counter=0, xthresh=0, xgot=0, ythresh=0, ygot=0, xlast, ylast, event=0;
+	int arrx[number],arry[number],arrz[number],flag=0,counter=0, xthresh=0, xgot=0, ythresh=0, ygot=0, xlast, ylast, event=0;
 	//arrx = array containing last length x values
 	//arry = array containing last length y values
 	volatile uint16_t x=0,y=0,dx=0,dy=0;
@@ -37,7 +37,7 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 	while(counter<number)
 	//while((xgot==0)||(ygot==0))	//Condition which terminates the loop after both x,y channels have been triggered
 		{
-		x=y=dx=dy=0;
+		x=y=z=dz=dx=dy=0;
 		digitalWrite(cs, 0); //Falling chip select initiates conversion and data transfer
 		for(int i=0;i<2;i++)
 			{
@@ -52,11 +52,14 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 			sleep;
 			digitalWrite(clock, 0);
 			sleep;
+			dz = digitalRead(adc0);
 			dx = digitalRead(adc0);
 			dy = digitalRead(adc1);
+			z=z|(dz<<(11-j));
 			x=x|(dx<<(11-j));
 			y=y|(dy<<(11-j));
 			}
+		arrz[counter]=z;
 		arrx[counter]=x;
 		arry[counter]=y;
 		digitalWrite(cs, 1); //Raise chip select
@@ -64,7 +67,7 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 		counter++;
 		}	
 	for(int i=0;i<number;i++)
-		printf("%d\t%d \n",arrx[i],arry[i]);
+		printf("%d\t%d\t%d\n",arrz[i],arrx[i],arry[i]);
 	}
 
 
