@@ -20,6 +20,14 @@ void mySleep() //Custom sleep function, wrote it to have greater control of slee
 		}
 	}
 
+int isLegit(int n)
+	{
+	if(n==0||n==1||n==3||n==7||n==15||n==31||n==63||n==127||n==255||n==511||n==1023)
+		return(0);
+	else
+		return(1);
+	}
+
 int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer to the pin numbers of the clock, chip select and adc output pins respectively
 	pinMode(clock,OUTPUT);
 	pinMode(cs, OUTPUT);
@@ -28,7 +36,7 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 	digitalWrite(cs, 1); //Initializes chip select to 1
 	digitalWrite(clock, 0); //Initializes clock to 1
 	sleep;
-	int arrx[length],arry[length],flag=0,counter=0, xthresh=0, xgot=0, ythresh=0, ygot=0, xlast, ylast, event=0;
+	int arrx[length],arry[length],flagx=0,flagy=0,counter=0, xthresh=0, xgot=0, ythresh=0, ygot=0, xlast, ylast, event=0;
 	//arrx = array containing last length x values
 	//arry = array containing last length y values
 	volatile uint16_t x=0,y=0,dx=0,dy=0;
@@ -59,7 +67,15 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 			}
 		arrx[counter%length]=x;
 		arry[counter%length]=y;
-		if(conditionx&&xgot==0)
+		if(isLegit(x)&&(x<1800||x>2200))
+			flagx++;
+		else
+			flagx=0;
+		if(isLegit(y)&&(y<1800||y>2200))
+			flagy++;
+		else
+			flagy=0;
+		if(flagx==2&&xgot==0)
 			{
 			xthresh=counter;
 			xgot=1;
@@ -67,7 +83,7 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 				event=counter;
 			xlast=x;
 			}
-		if(conditiony&&ygot==0)
+		if(flagy==2&&ygot==0)
 			{
 			ythresh=counter;
 			ygot=1;
@@ -90,9 +106,11 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 		printf("%d\t%d \n",arrx[i],arry[i]);
 	printf("%d\t%d x\n",xthresh,xlast);
 	printf("%d\t%d y\n",ythresh,ylast);
+	printf("%d",xthresh-ythresh);
 	//for(int i=0;i<100;i++)
 	//	printf("%d\n",arr[i]);
 	}
+
 
 
 int main() {

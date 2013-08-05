@@ -7,7 +7,7 @@
 //#define sleep delayMicroseconds(0.9)
 #define sleep mySleep()
 #define length 500
-#define number 100000
+#define number 1000000
 #define conditionx (x<1500&&x>1200)||(x>2300&&x<2999)
 #define conditiony (y<1500&&y>1200)||(y>2300&&y<2999)
 
@@ -66,6 +66,7 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 		}	
 	for(int i=0;i<number;i++)
 		printf("%d\t%d\n",arrx[i],arry[i]);
+	printf("%d\n",xthresh-ythresh);
 	}
 
 
