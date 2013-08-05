@@ -52,14 +52,14 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 			sleep;
 			digitalWrite(clock, 0);
 			sleep;
-			dz = digitalRead(adc0);
+			dx = digitalRead(adc0);
 			dx = digitalRead(adc0);
 			dy = digitalRead(adc1);
-			z=z|(dz<<(11-j));
+			//z=z|(dz<<(11-j));
 			x=x|(dx<<(11-j));
 			y=y|(dy<<(11-j));
 			}
-		arrz[counter]=z;
+		//arrz[counter]=z;
 		arrx[counter]=x;
 		arry[counter]=y;
 		digitalWrite(cs, 1); //Raise chip select
@@ -67,7 +67,7 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 		counter++;
 		}	
 	for(int i=0;i<number;i++)
-		printf("%d\t%d\t%d\n",arrz[i],arrx[i],arry[i]);
+		printf("%d\t%d\n",arrx[i],arry[i]);
 	}
 
 
