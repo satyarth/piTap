@@ -51,6 +51,7 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 			sleep;
 			digitalWrite(clock, 0);
 			sleep;
+			dx = digitalRead(adc0); //Adding an extra digitalRead() here seems to fix a lot of the shoddy values... not too sure why but it works!
 			dx = digitalRead(adc0);
 			dy = digitalRead(adc1);
 			x=x|(dx<<(11-j));
