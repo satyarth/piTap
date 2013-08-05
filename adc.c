@@ -10,7 +10,7 @@
 #define conditionx (x<1500&&x>1200)||(x>2300&&x<2999)
 #define conditiony (y<1500&&y>1200)||(y>2300&&y<2999)
 
-void mySleep()
+void mySleep() //Custom sleep function, wrote it to have greater control of sleep timings than delayMictoseconds(int)
 	{
 	int n=0;
 	for(int i=0;i<1;i++)
@@ -29,10 +29,12 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 	digitalWrite(clock, 0); //Initializes clock to 1
 	sleep;
 	int arrx[length],arry[length],flag=0,counter=0, xthresh=0, xgot=0, ythresh=0, ygot=0, xlast, ylast, event=0;
+	//arrx = array containing last length x values
+	//arry = array containing last length y values
 	volatile uint16_t x=0,y=0,dx=0,dy=0;
 	//while(1)
 	//while(counter<100)
-	while((xgot==0)||(ygot==0))
+	while((xgot==0)||(ygot==0))	//Condition which terminates the loop after both x,y channels have been triggered
 		{
 		x=y=dx=dy=0;
 		digitalWrite(cs, 0); //Falling chip select initiates conversion and data transfer
@@ -96,7 +98,6 @@ int main() {
 	piHiPri(99);
 	if (wiringPiSetup () == -1)
 		exit (1);
-	//singleread(7,14,11);
 	doubleread(7,14,11,1);
 	return 0;
 }
