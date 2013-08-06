@@ -75,7 +75,7 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 			flagy++;
 		else
 			flagy=0;
-		if(flagx==2&&xgot==0)
+		if(flagx==2&&xgot==0) //Event considered triggered when two consecutive legit values are not in range [1800,2200]
 			{
 			xthresh=counter;
 			xgot=1;
@@ -83,7 +83,7 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 				event=counter;
 			xlast=x;
 			}
-		if(flagy==2&&ygot==0)
+		if(flagy==2&&ygot==0) //Same as above on y channel
 			{
 			ythresh=counter;
 			ygot=1;
@@ -91,11 +91,6 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 				event=counter;
 			ylast=y;
 			}
-		
-		//arr[counter]=x;
-		//if((x>2300&&x<2999)||y>2300)
-		//	printf("%d\t%d\n",x,y);
-		//	printf("%d\n",counter);
 		digitalWrite(cs, 1); //Raise chip select
 		sleep;
 		counter++;
@@ -107,8 +102,6 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 	printf("%d\t%d x\n",xthresh,xlast);
 	printf("%d\t%d y\n",ythresh,ylast);
 	printf("%d",xthresh-ythresh);
-	//for(int i=0;i<100;i++)
-	//	printf("%d\n",arr[i]);
 	}
 
 
