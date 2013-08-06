@@ -91,6 +91,16 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 				event=counter;
 			ylast=y;
 			}
+		if(xgot==1&&((counter-xthresh)>700)) //Resets xgot,xthresh if y is untriggered 700 loops after x is triggered
+			{
+			xgot=0;
+			xthresh=0;
+			}
+		if(ygot==1&&((counter-ythresh)>700)) //Resets ygot,ythresh if x is untriggered 700 loops after y is triggered
+			{
+			ygot=0;
+			ythresh=0;
+			}
 		digitalWrite(cs, 1); //Raise chip select
 		sleep;
 		counter++;
