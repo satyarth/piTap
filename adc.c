@@ -7,6 +7,7 @@
 //#define sleep delayMicroseconds(0.9)
 #define sleep mySleep()
 #define length 500
+#define maxloops 600
 #define conditionx (x<1500&&x>1200)||(x>2300&&x<2999)
 #define conditiony (y<1500&&y>1200)||(y>2300&&y<2999)
 
@@ -91,12 +92,12 @@ int doubleread(int clock, int cs, int adc0, int adc1) {	//Input variables refer 
 				event=counter;
 			ylast=y;
 			}
-		if(xgot==1&&((counter-xthresh)>700)) //Resets xgot,xthresh if y is untriggered 700 loops after x is triggered
+		if(xgot==1&&((counter-xthresh)>maxloops)) //Resets xgot,xthresh if y is untriggered maxloops loops after x is triggered
 			{
 			xgot=0;
 			xthresh=0;
 			}
-		if(ygot==1&&((counter-ythresh)>700)) //Resets ygot,ythresh if x is untriggered 700 loops after y is triggered
+		if(ygot==1&&((counter-ythresh)>maxloops)) //Resets ygot,ythresh if x is untriggered maxloops loops after y is triggered
 			{
 			ygot=0;
 			ythresh=0;
@@ -120,6 +121,6 @@ int main() {
 	piHiPri(99);
 	if (wiringPiSetup () == -1)
 		exit (1);
-	doubleread(7,14,11,1);
+	doubleread(7,14,4,1);
 	return 0;
 }
