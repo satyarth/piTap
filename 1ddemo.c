@@ -7,7 +7,7 @@
 //#define sleep delayMicroseconds(0.9)
 #define sleep mySleep()
 #define length 500
-#define maxloops 600
+#define maxloops 700
 #define conditionx (x<1500&&x>1200)||(x>2300&&x<2999)
 #define conditiony (y<1500&&y>1200)||(y>2300&&y<2999)
 
