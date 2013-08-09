@@ -8,8 +8,8 @@
 #define cspin 14
 #define adc0pin 4
 #define adc1pin 1
-#define adc2pin 11
-#define adc3pin 6
+#define adc2pin 6
+#define adc3pin 11
 
 
 //#define sleep delayMicroseconds(0.1)
