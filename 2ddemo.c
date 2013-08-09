@@ -12,10 +12,10 @@
 #define adc3pin 6
 
 
-//#define sleep delayMicroseconds(1)
+//#define sleep delayMicroseconds(0.1)
 #define sleep mySleep()
 #define length 500
-#define maxloops 700
+#define maxloops 1000
 
 void mySleep() //Custom sleep function, wrote it to have greater control of sleep timings than delayMictoseconds(int)
 	{
