@@ -112,8 +112,10 @@ int findTimeDiff(int clock, int cs, int adc0, int adc1,int adc2, int adc3) {	//I
 		sleep;
 		counter++;
 		}	
+	FILE *ofp = fopen("timings.pitap","w");
 	for(i=0;i<4;i++)
-		printf("%d\n",event-thresh[i]);
+		fprintf(ofp,"%d\n",event-thresh[i]);
+	fclose(ofp);
 	}
 
 
