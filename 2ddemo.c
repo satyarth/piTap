@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <unistd.h>
 #include <math.h>
+#include "fmin.h"
 
 //Defining GPIO pin numbers for clock, chip select and four ADC inputs
 
