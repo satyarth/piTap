@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <math.h>
+#include "fmin.h"
 
 #define divisions_x 100
 #define divisions_y 80
@@ -29,7 +30,7 @@ float cost_function(float x,float y,float d_ba,float d_dc,float d_ca,float d_db)
 	return(cost);
 	}
 
-void main()
+void findPosition() //Reads timing differences from a file and outputs the position of the tap
 	{
 	int i,j;
 	float minx=50,miny=4,arr[4];
@@ -57,5 +58,5 @@ void main()
 				miny=(float)j*(y_d-y_a)/divisions_y;
 				}
 			}
-	printf("%f\t%f",minx,miny);
+	printf("%f\t%f\n",minx,miny);
 	}
