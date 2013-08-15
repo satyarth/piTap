@@ -11,12 +11,13 @@ int main() {
 	piHiPri(99);
 	if (wiringPiSetup () == -1)
 		exit (1);
+	int *timingsptr;
 	while(1)
 		{
 		timingsptr=findTimeDiff();
 		int timings[4];
 		for(int i=0;i<4;i++)
-			timings[i]=*(tiningsptr+i);
+			timings[i]=*(timingsptr+i);
 		findPosition(timings[0],timings[1],timings[2],timings[3]);
 		delay(500);
 		}
