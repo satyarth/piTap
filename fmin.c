@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <math.h>
 #include "fmin.h"
+#include "findTimeDiff.h"
 
 //Positions of four microphones + accuracy of minimization program
 #define divisions_x 100
