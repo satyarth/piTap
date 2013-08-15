@@ -13,8 +13,11 @@ int main() {
 		exit (1);
 	while(1)
 		{
-		findTimeDiff();
-		findPosition();
+		timingsptr=findTimeDiff();
+		int timings[4];
+		for(int i=0;i<4;i++)
+			timings[i]=*(tiningsptr+i);
+		findPosition(timings[0],timings[1],timings[2],timings[3]);
 		delay(500);
 		}
 	return 0;

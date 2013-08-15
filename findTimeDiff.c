@@ -36,7 +36,7 @@ int isLegit(int n)
 		return(1);
 	}
 
-void findTimeDiff() {	//Waits until it detects a tap, then writes the timing differences to a file.
+int * findTimeDiff() {	//Waits until it detects a tap, then writes the timing differences to a file.
 	pinMode(clockpin,OUTPUT);
 	pinMode(cspin, OUTPUT);
 	pinMode(adc0pin, INPUT);
@@ -112,8 +112,8 @@ void findTimeDiff() {	//Waits until it detects a tap, then writes the timing dif
 		sleep;
 		counter++;
 		}	
-	FILE *ofp = fopen("timings.pitap","w");
+	static int timings[4];
 	for(i=0;i<4;i++)
-		fprintf(ofp,"%d\n",event-thresh[i]);
-	fclose(ofp);
+		timings[i]=event-thresh[i];
+	return timings;	
 	}
