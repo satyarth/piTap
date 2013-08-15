@@ -17,7 +17,10 @@ int main() {
 		timingsptr=findTimeDiff();
 		int timings[4];
 		for(int i=0;i<4;i++)
+			{
 			timings[i]=*(timingsptr+i);
+			printf("%d\n",timings[i]);
+			}
 		findPosition(timings[0],timings[1],timings[2],timings[3]);
 		delay(500);
 		}
