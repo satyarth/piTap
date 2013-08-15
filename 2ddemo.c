@@ -15,20 +15,6 @@
 #define adc2pin 6
 #define adc3pin 11
 
-//Positions of four microphones + accuracy of minimization program
-
-#define divisions_x 100
-#define divisions_y 80
-#define v 0.37
-#define x_a 0
-#define y_a 0
-#define x_b 100
-#define y_b 0
-#define x_c 0
-#define y_c 80
-#define x_d 100
-#define y_d 80
-
 //#define sleep delayMicroseconds(0.1)
 #define sleep mySleep()
 #define maxloops 1000 //Maximum number of loops that may elapse between any two events being triggered

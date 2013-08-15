@@ -4,6 +4,7 @@
 #include <math.h>
 #include "fmin.h"
 
+//Positions of four microphones + accuracy of minimization program
 #define divisions_x 100
 #define divisions_y 80
 #define v 0.37
