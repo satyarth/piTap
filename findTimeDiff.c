@@ -39,7 +39,6 @@ int isLegit(int n)
 //Waits until it detects a tap, then writes the timing differences to a file.
 int * findTimeDiff()
 	{
-	printf("timingdiffs started");
 	pinMode(clockpin,OUTPUT);
 	pinMode(cspin, OUTPUT);
 	pinMode(adc0pin, INPUT);
