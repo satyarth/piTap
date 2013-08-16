@@ -6,17 +6,17 @@
 #include "findTimeDiff.h"
 
 //Positions of four microphones + accuracy of minimization program
-#define divisions_x 100
-#define divisions_y 80
+#define divisions_x 125
+#define divisions_y 85
 #define v 0.37
 #define x_a 0
 #define y_a 0
-#define x_b 100
+#define x_b 125
 #define y_b 0
 #define x_c 0
-#define y_c 80
-#define x_d 100
-#define y_d 80
+#define y_c 85
+#define x_d 125
+#define y_d 85
 
 float error(float x,float y,float x1,float y1,float x2,float y2,float tdiff)
 	{
