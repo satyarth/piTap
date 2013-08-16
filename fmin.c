@@ -32,9 +32,10 @@ float cost_function(float x,float y,float d_ba,float d_dc,float d_ca,float d_db)
 	return(cost);
 	}
 
-void findPosition(int a, int b, int c, int d) //Reads timing differences from a file and outputs the position of the tap
+int * findPosition(int a, int b, int c, int d) //Reads timing differences from a file and outputs the position of the tap
 	{
 	int i,j;
+	static int coords[2];
 	float minx=50,miny=4;	
 	float d_ba,d_dc,d_ca,d_db,min;
 	d_ba=v*((float)a-(float)b);
@@ -54,5 +55,7 @@ void findPosition(int a, int b, int c, int d) //Reads timing differences from a 
 				miny=(float)j*(y_d-y_a)/divisions_y;
 				}
 			}
-	printf("%f\t%f\n",minx,miny);
+	coords[0]=(int)minx;
+	coords[1]=(int)miny;
+	return coords;
 	}
