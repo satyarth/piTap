@@ -8,8 +8,13 @@
 #include "findTimeDiff.h"
 #include "mouseClick.h"
 
+#define x_max_position 100
+#define y_max_position 80
+#define x_pixels 1280
+#define y_pixels 1024
+
 int main() {
-	int *timingsPtr, *positionPtr, timings[4], coords[2];
+	int *timingsPtr, *positionPtr, timings[4], position[2],x,y;
 	piHiPri(99);
 	if (wiringPiSetup () == -1)
 		exit (1);
@@ -23,9 +28,12 @@ int main() {
 		positionPtr=findPosition(timings[0],timings[1],timings[2],timings[3]);
 		for(int i=0;i<2;i++)
 			{
-			coords[i]=*(positionPtr+i);
+			position[i]=*(positionPtr+i);
 			}
-		clickCoords(coords[0],coords[1]);
+		printf("position: %d %d",position[0],position[1]);
+		x=(int)((float)coords[0]*x_pixels/x_max_position);
+		y=(int)((float)coords[1]*y_pixels/y_max_position);
+		clickCoords(x,y);
 		delay(500);
 		}
 	return 0;
