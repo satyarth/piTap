@@ -8,10 +8,10 @@
 #include "findTimeDiff.h"
 #include "mouseClick.h"
 
-#define x_max_position 100
-#define y_max_position 80
-#define x_pixels 1280
-#define y_pixels 1024
+#define x_max_position 125
+#define y_max_position 85
+#define x_pixels 1024
+#define y_pixels 768
 
 int main() {
 	int *timingsPtr, *positionPtr, timings[4], position[2],x,y;
@@ -26,7 +26,7 @@ int main() {
 			{
 			timings[i]=*(timingsPtr+i);
 			}
-		printf("Timing: %d\n",timings[0]);
+		printf("Timings:\n a: %d\nb: %d\nc: %d\nd: %d\n",timings[0],timings[1],timings[2],timings[3]);
 		positionPtr=findPosition(timings[0],timings[1],timings[2],timings[3]);
 		
 		printf("got positionPtr\n");
@@ -38,8 +38,8 @@ int main() {
 		printf("+\n");
 		printf("position:%d\t%d",position[0],position[1]);
 		printf("+\n");
-		x=(int)((float)position[0]*x_pixels/x_max_position);
-		y=(int)((float)position[1]*y_pixels/y_max_position);
+		x=x_pixels-(int)((float)position[0]*x_pixels/x_max_position);
+		y=y_pixels-(int)((float)position[1]*y_pixels/y_max_position);
 		printf("x,y:%d\t%d",x,y);
 		printf("+\n");
 		clickCoords(x,y);
