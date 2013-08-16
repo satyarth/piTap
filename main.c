@@ -26,6 +26,7 @@ int main() {
 			{
 			timings[i]=*(timingsPtr+i);
 			}
+		printf("Timing: %d\n",timings[0]);
 		positionPtr=findPosition(timings[0],timings[1],timings[2],timings[3]);
 		for(int i=0;i<2;i++)
 			{
