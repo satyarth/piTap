@@ -40,7 +40,7 @@ int main() {
 		printf("+\n");
 		x=(int)((float)position[0]*x_pixels/x_max_position);
 		y=(int)((float)position[1]*y_pixels/y_max_position);
-		printf("x,y:%d\t%d",x,y]);
+		printf("x,y:%d\t%d",x,y);
 		printf("+\n");
 		clickCoords(x,y);
 		delay(500);
