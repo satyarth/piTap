@@ -32,6 +32,7 @@ int main() {
 		printf("got positionPtr\n");
 		for(int i=0;i<2;i++)
 			{
+			printf("-\n");
 			position[i]=*(positionPtr+i);
 			}
 		printf("position: %d %d",position[0],position[1]);
