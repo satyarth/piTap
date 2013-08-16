@@ -28,6 +28,8 @@ int main() {
 			}
 		printf("Timing: %d\n",timings[0]);
 		positionPtr=findPosition(timings[0],timings[1],timings[2],timings[3]);
+		
+		printf("got positionPtr\n");
 		for(int i=0;i<2;i++)
 			{
 			position[i]=*(positionPtr+i);
