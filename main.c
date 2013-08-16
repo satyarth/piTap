@@ -20,6 +20,7 @@ int main() {
 		exit (1);
 	while(1)
 		{
+		printf("start loop\n");
 		timingsPtr=findTimeDiff();
 		for(int i=0;i<4;i++)
 			{
