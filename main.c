@@ -36,7 +36,8 @@ int main() {
 			position[i]=*(positionPtr+i);
 			}
 		printf("+\n");
-		printf("position: %d %d",position[0],position[1]);
+		printf("position:%d\t%d",position[0],position[1]);
+		printf("+\n");
 		x=(int)((float)position[0]*x_pixels/x_max_position);
 		y=(int)((float)position[1]*y_pixels/y_max_position);
 		clickCoords(x,y);
