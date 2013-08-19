@@ -48,7 +48,7 @@ int * findPosition(int a, int b, int c, int d) //Reads timing differences from a
 	d_ca=v*((float)a-(float)c);
 	d_db=v*((float)b-(float)d);
 	float val[x_d][y_d];
-	min=cost_function(50,50,d_ba,d_dc,d_ca,d_db);
+	min=cost_function(50,50,d_ba,d_dc,d_ca,d_db,v);
 	for(i=0;i<divisions_x;i++)
 		for(j=0;j<divisions_y;j++)
 			{
