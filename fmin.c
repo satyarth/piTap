@@ -41,7 +41,7 @@ int * findPosition(int a, int b, int c, int d) //Reads timing differences from a
 	const float v;
 	FILE *ifp;
 	ifp = fopen("calibration.txt","r");
-	fscanf(fp, "%d", v);
+	fscanf(ifp, "%d", v);
 	fclose(ifp); 
 	d_ba=v*((float)a-(float)b);
 	d_dc=v*((float)c-(float)d);
