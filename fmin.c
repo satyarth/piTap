@@ -8,7 +8,7 @@
 //Positions of four microphones + accuracy of minimization program
 #define divisions_x 125
 #define divisions_y 85
-#define v 1.163  //Velocity in centimeters per cycle
+//#define v 1.163  //Velocity in centimeters per cycle
 #define x_a 0
 #define y_a 0
 #define x_b 125
