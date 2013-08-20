@@ -8,7 +8,7 @@ void main()
 	float v;
 	FILE *ifp;
 	ifp = fopen("calibration","r");
-	fscanf(fp, "%f", v);
+	fscanf(ifp, "%f", v);
 	fclose(ifp);
 	printf("%f", v);
 	}
