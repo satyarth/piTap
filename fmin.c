@@ -8,7 +8,7 @@
 //Positions of four microphones + accuracy of minimization program
 #define divisions_x 125
 #define divisions_y 85
-#define v 1.163 // Velocity in centimeters per cycle
+//#define v 1.163  Velocity in centimeters per cycle
 #define x_a 0
 #define y_a 0
 #define x_b 125
@@ -38,6 +38,11 @@ int * findPosition(int a, int b, int c, int d) //Reads timing differences from a
 	static int coords[2];
 	float minx=50,miny=4;	
 	float d_ba,d_dc,d_ca,d_db,min;
+	const float v;
+	FILE *ifp;
+	ifp = fopen("calibration","r");
+	fscanf(ifp, "%f", &v);
+	fclose(ifp);
 	d_ba=v*((float)a-(float)b);
 	d_dc=v*((float)c-(float)d);
 	d_ca=v*((float)a-(float)c);
