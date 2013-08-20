@@ -34,6 +34,7 @@ float cost_function(float x,float y,float d_ba,float d_dc,float d_ca,float d_db,
 
 int * findPosition(int a, int b, int c, int d) //Reads timing differences from a file and outputs the position of the tap
 	{
+	printf("Start findPosition/n");
 	int i,j;
 	static int coords[2];
 	float minx=50,miny=4;	
