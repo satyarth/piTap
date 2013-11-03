@@ -24,7 +24,6 @@ void mySleep() //Custom sleep function, wrote it to have greater control of slee
 	for(int i=0;i<1;i++)
 		{
 		n+=1;
-		asm volatile("":::);
 		}
 	}
 
